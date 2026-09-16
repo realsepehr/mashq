@@ -1,0 +1,9 @@
+{
+  "appId": "com.mashqyar.app",
+  "appName": "مشق‌یار",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": true
+  }
+}
