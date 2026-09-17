@@ -58,9 +58,8 @@
   .brand{display:flex;align-items:center;gap:10px;}
   .logo{
     width:40px;height:40px;border-radius:12px;
-    background:var(--accent);
+    background:#16281b;
     display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:18px;color:#1c1204;
     flex-shrink:0;
   }
   .brand-text h1{margin:0;font-size:17px;font-weight:800;}
@@ -224,7 +223,7 @@
     display:flex;flex-direction:column;align-items:center;gap:4px;
     color:var(--text-dim2);font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;
   }
-  nav.tabbar button .icon{font-size:18px;}
+  nav.tabbar button .icon{display:flex;align-items:center;justify-content:center;}
   nav.tabbar button.active{color:var(--accent);}
 
   .modal-overlay{
@@ -285,7 +284,14 @@
 
   <header class="topbar">
     <div class="brand">
-      <div class="logo" id="logoLetter">م</div>
+      <div class="logo" id="logoLetter">
+        <svg viewBox="0 0 100 100" width="24" height="24">
+          <path d="M18 30 Q50 20 50 30 L50 76 Q50 66 18 76 Z" fill="#f0a94a"/>
+          <path d="M82 30 Q50 20 50 30 L50 76 Q50 66 82 76 Z" fill="#d97a1f"/>
+          <line x1="50" y1="28" x2="50" y2="78" stroke="#132318" stroke-width="3"/>
+          <path d="M50 42 L57 55 L71 57 L61 66 L64 80 L50 73 L36 80 L39 66 L29 57 L43 55 Z" fill="#f4ead6"/>
+        </svg>
+      </div>
       <div class="brand-text">
         <h1>مشق‌یار</h1>
         <p>برنامه‌ای که با تو راه می‌آید</p>
@@ -354,13 +360,19 @@
 
   <nav class="tabbar">
     <button class="tab-btn active" data-tab="today" onclick="goTo('today')">
-      <span class="icon">🏠</span>امروز
+      <span class="icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.5 12 4l8.5 7.5"/><path d="M6 10.5V20a1 1 0 0 0 1 1h3v-5.5h4V21h3a1 1 0 0 0 1-1v-9.5"/></svg>
+      </span>امروز
     </button>
     <button class="tab-btn" data-tab="program" onclick="goTo('program')">
-      <span class="icon">☰</span>برنامه
+      <span class="icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.2"/><path d="M3.5 9.5h17"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M7.5 13.2h3M7.5 16.6h6M13.2 13.2h3.3"/></svg>
+      </span>برنامه
     </button>
     <button class="tab-btn" data-tab="personalize" onclick="goTo('personalize')">
-      <span class="icon">＋</span>شخصی‌سازی
+      <span class="icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.8 3.5 20.5 8.2 8.7 20H4v-4.7Z"/><path d="M13.6 5.7 18.3 10.4"/></svg>
+      </span>شخصی‌سازی
     </button>
   </nav>
 </div>
@@ -487,7 +499,6 @@ function renderHeader(){
   const now = new Date();
   const weekdayIdx = now.getDay()===6?0:now.getDay()+1;
   document.getElementById('todayDateChip').textContent = DAY_NAMES[weekdayIdx] + ' ' + toPersianDigits(now.getDate()) + ' ' + persianMonthApprox(now);
-  document.getElementById('logoLetter').textContent = state.name ? state.name[0] : 'م';
   const greetings = ['صبح بخیر','ظهر بخیر','عصر بخیر','شب بخیر'];
   const h = now.getHours();
   const g = h<12?greetings[0]:h<16?greetings[1]:h<20?greetings[2]:greetings[3];
